@@ -1,0 +1,216 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-image::after {
+            opacity: 1;
+        }
+
+        .spaghetti { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23ff6b6b" width="400" height="200"/><circle fill="%23feca57" cx="200" cy="100" r="60"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16" font-family="Arial">🍝 Spaghetti</text></svg>'); }
+        .caesar { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%2348ca8e" width="400" height="200"/><circle fill="%23feca57" cx="200" cy="100" r="60"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16" font-family="Arial">🥗 Caesar Salad</text></svg>'); }
+        .tacos { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23ff9ff3" width="400" height="200"/><circle fill="%23feca57" cx="200" cy="100" r="60"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16" font-family="Arial">🌮 Tacos</text></svg>'); }
+        .pancakes { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23f9ca24" width="400" height="200"/><circle fill="%23ff6348" cx="200" cy="100" r="60"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16" font-family="Arial">🥞 Pancakes</text></svg>'); }
+
+        .recipe-content {
+            padding: 25px;
+        }
+
+        .recipe-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .recipe-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .recipe-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+            border-bottom: 2px solid #667eea;
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            background: #f8f9ff;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border-left: 3px solid #667eea;
+            font-size: 0.9rem;
+        }
+
+        .preparation {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .preparation ol {
+            margin-left: 20px;
+        }
+
+        .preparation li {
+            margin: 8px 0;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .stars {
+            color: #feca57;
+            font-size: 1.2rem;
+        }
+
+        .cook-time {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .recipe-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .recipe-card {
+                margin: 0 10px;
+            }
+            
+            body {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .recipe-content {
+                padding: 20px;
+            }
+            
+            .recipe-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .recipe-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    
